@@ -31,12 +31,18 @@ public class Grapling : MonoBehaviour
 
     void Update()
     {
-        if(!grappling)
+        if (!grappling)
+        {
             FindNearestVisibleTarget();
-
+            rb.transform.gameObject.layer = 8;
+        }
+        else
+        {
+            rb.transform.gameObject.layer = 11;
+        }
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, goalFov, Time.deltaTime * 9);
         
-        crosshair.SetActive(CurrentTarget!=null);
+        crosshair.SetActive(CurrentTarget!=null && grappling!=false);
 
         if (CurrentTarget!=null)
         {
