@@ -67,5 +67,33 @@ PrefabInstance:
     - {fileID: -5715949108941688703, guid: 6e95c66c466174045b44c21e1c056fe8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8717557167538948055, guid: 6e95c66c466174045b44c21e1c056fe8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6804384952063068457}
   m_SourcePrefab: {fileID: 100100000, guid: 6e95c66c466174045b44c21e1c056fe8, type: 3}
+--- !u!1 &2050314786763527270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8717557167538948055, guid: 6e95c66c466174045b44c21e1c056fe8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7245960164918203313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6804384952063068457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050314786763527270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ea02ffc49b13e47b63e3ddf5b9fa49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 62853356605564946, guid: 35501a84591328a418f6dd2c87fde289, type: 3}
+  detectionRange: 15
+  fireRate: 1.5
+  firePoint: {fileID: 0}
+  bulletTrailPrefab: {fileID: 3600775333794788816, guid: c60739047387a324db4cbeb1bfa2632a,
+    type: 3}
