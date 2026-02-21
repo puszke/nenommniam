@@ -12936,11 +12936,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 348469625028026939, guid: c33f4af8a415859448e290aa688e24da,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 576148756937192406, guid: c33f4af8a415859448e290aa688e24da,
         type: 3}
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 673074491}
+    - target: {fileID: 2255957344913027204, guid: c33f4af8a415859448e290aa688e24da,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 3575
+      objectReference: {fileID: 0}
     - target: {fileID: 2267899851790781015, guid: c33f4af8a415859448e290aa688e24da,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12951,6 +12961,11 @@ PrefabInstance:
       propertyPath: leapForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4062359179353297710, guid: c33f4af8a415859448e290aa688e24da,
+        type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 673074491}
     - target: {fileID: 4683578038529471049, guid: c33f4af8a415859448e290aa688e24da,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -29588,6 +29603,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair
       objectReference: {fileID: 0}
+    - target: {fileID: 4979085215679375597, guid: 7282e78d3c43cd34bbaf6c22ff4922d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7512743160047011914, guid: 7282e78d3c43cd34bbaf6c22ff4922d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29882,7 +29902,7 @@ SkinnedMeshRenderer:
   m_Bones:
   - {fileID: 7297961800955802239}
   m_BlendShapeWeights:
-  - 0
+  - 98.6
   m_RootBone: {fileID: 7297961800955802239}
   m_AABB:
     m_Center: {x: -0.07429585, y: 0.16278814, z: -0.08621828}
