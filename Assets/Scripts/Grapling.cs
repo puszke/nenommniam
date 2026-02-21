@@ -22,7 +22,7 @@ public class Grapling : MonoBehaviour
     
     public bool grappling = false;
 
-    public GameObject grabArm, grabArmEnd, mouth;
+    public GameObject grabArm, grabArmEnd, mouth, crosshair;
 
     void Awake()
     {
@@ -36,9 +36,11 @@ public class Grapling : MonoBehaviour
 
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, goalFov, Time.deltaTime * 9);
         
+        crosshair.SetActive(CurrentTarget!=null);
 
         if (CurrentTarget!=null)
         {
+            crosshair.transform.position = Vector3.Lerp(crosshair.transform.position, CurrentTarget.transform.position, Time.deltaTime * 9);
             currentDistance = Vector3.Distance(CurrentTarget.position, transform.position);
             transform.LookAt(CurrentTarget);
             if(currentDistance<maxDistance)
@@ -61,6 +63,10 @@ public class Grapling : MonoBehaviour
                 grappling = false;
                 grabArm.SetActive(false);
             }
+        }
+        else
+        {
+            grappling = false;
         }
     }
 
