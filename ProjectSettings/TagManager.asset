@@ -7,6 +7,7 @@ TagManager:
   - Alive
   - Claws
   - Jump
+  - Kill
   layers:
   - Default
   - TransparentFX
