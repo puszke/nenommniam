@@ -5052,5 +5052,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRange: 5
+  detectionRange: 7
   runSpeed: 5

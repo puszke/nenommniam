@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NPCFlee : MonoBehaviour
@@ -14,6 +15,8 @@ public class NPCFlee : MonoBehaviour
 
     private bool isFleeing = false;
     private Alive aliveScript;
+
+    public Animator animator;
 
     void Start()
     {
@@ -33,6 +36,12 @@ public class NPCFlee : MonoBehaviour
         }
     }
 
+    IEnumerator run()
+    {
+        yield return new WaitForSeconds(1f);
+        isFleeing = true;
+    }
+
     void Update()
     {
         if (player == null) return;
@@ -43,9 +52,14 @@ public class NPCFlee : MonoBehaviour
         // Jeśli gracz znajduje się w zasięgu wykrywania
         if (distanceToPlayer <= detectionRange)
         {
-            isFleeing = true;
+            StartCoroutine(run());
+            animator.SetBool("run", true);
         }
 
+        if(!aliveScript.isAlive)
+        {
+            animator.speed = 0;
+        }
         // Jeśli NPC zaczął już uciekać a skrypt Alive pozwala na ruch (żyje)
         if (isFleeing && (aliveScript == null || aliveScript.isAlive))
         {

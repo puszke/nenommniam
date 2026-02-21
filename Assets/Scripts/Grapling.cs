@@ -42,7 +42,7 @@ public class Grapling : MonoBehaviour
         }
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, goalFov, Time.deltaTime * 9);
         
-        crosshair.SetActive(CurrentTarget!=null && grappling!=false);
+        crosshair.SetActive(CurrentTarget!=null && !grappling);
 
         if (CurrentTarget!=null)
         {
