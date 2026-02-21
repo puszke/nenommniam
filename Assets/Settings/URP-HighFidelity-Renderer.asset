@@ -633,12 +633,12 @@ MonoBehaviour:
     AfterOpaque: 0
     Source: 1
     NormalSamples: 1
-    Intensity: 0.5
-    DirectLightingStrength: 0.25
-    Radius: 0.25
+    Intensity: 6.64
+    DirectLightingStrength: 0.202
+    Radius: 0.64
     Samples: 0
     BlurQuality: 0
-    Falloff: 100
+    Falloff: 2333
     SampleCount: -1
   m_BlueNoise256Textures:
   - {fileID: 2800000, guid: 36f118343fc974119bee3d09e2111500, type: 3}
@@ -792,7 +792,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 6242008331697017815}
-  m_RendererFeatureMap: adc0de57c6d2eee5d753d48f8111a056
+  - {fileID: 9117385198708413444}
+  m_RendererFeatureMap: adc0de57c6d2eee5d753d48f8111a05604546b418875877e
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -1691,3 +1692,18 @@ MonoBehaviour:
   - 0.12409639
   - 0.043749984
   - 0.007228916
+--- !u!114 &9117385198708413444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f61da571db4a6b499443747826c2c3e, type: 3}
+  m_Name: VolFxPool
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  _list:
+    m_List: []
