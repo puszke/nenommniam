@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 4890851465652539061}
   - component: {fileID: 5568028662905055620}
   - component: {fileID: 5377183834865023349}
+  - component: {fileID: 2607021233254500787}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -358,6 +359,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5981275664012222799}
   sensitivity: 2
+--- !u!114 &2607021233254500787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087965515879031068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420155665c39532469ca4fe80503857c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1999149617101750648
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +680,7 @@ MonoBehaviour:
   grabArm: {fileID: 8034550930714982426}
   grabArmEnd: {fileID: 7149712967761645332}
   mouth: {fileID: 8825521777890467483}
+  crosshair: {fileID: 0}
 --- !u!1 &5454979894907996765
 GameObject:
   m_ObjectHideFlags: 0

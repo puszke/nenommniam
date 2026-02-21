@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="TimeBar.uss" />
+    <ui:VisualElement name="time-bar-container" class="time-bar-container">
+        
+        <!-- Maska obcinająca rogi wypełniacza (schowana np. o parę pikseli w środku, gdzie trzeba) -->
+        <ui:VisualElement name="time-bar-fill-mask" class="time-bar-fill-mask">
+            <ui:VisualElement name="time-bar-fill" class="time-bar-fill" />
+        </ui:VisualElement>
+
+        <!-- Ramka na samej górze (nakłada się jako okienko na wypełniacz) -->
+        <ui:VisualElement name="time-bar-frame" class="time-bar-frame" />
+    </ui:VisualElement>
+</ui:UXML>

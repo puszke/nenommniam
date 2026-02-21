@@ -11,6 +11,8 @@ public class Alive : MonoBehaviour
 
     private Rigidbody rb;
 
+    [SerializeField] private GameObject blood;
+
     void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "Claws" && isAlive)
@@ -30,6 +32,8 @@ public class Alive : MonoBehaviour
         transform.Rotate(Random.Range(-90,90),Random.Range(-90,90), Random.Range(-90,90));
         rb.isKinematic = true;
         Time.timeScale = 0.2f;
+        blood.SetActive(true);
+        CamShake.Instance.Shake(0.2f, 0.1f);
         Time.fixedDeltaTime = 0.002f * Time.timeScale;
         yield return new WaitForSecondsRealtime(0.3f);
         rb.isKinematic = false;
