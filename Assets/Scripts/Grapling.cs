@@ -84,8 +84,8 @@ public class Grapling : MonoBehaviour
             goalFov =120;
             //rb.useGravity = false;
             rb.transform.LookAt(CurrentTarget.position);
-            rb.transform.position = Vector3.Lerp(transform.position, CurrentTarget.position, 12* Time.deltaTime);
-
+            //rb.transform.position = Vector3.Lerp(transform.position, CurrentTarget.position, 12* Time.deltaTime);
+            rb.AddForce(transform.forward, ForceMode.Impulse);
             //grappling=false;
         }
         else
