@@ -23,7 +23,14 @@ public class PlayerMovement : MonoBehaviour
     {
         rb=GetComponent<Rigidbody>();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="Jump")
+        {
+            grav = -99;
+            Jump();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         y=Input.GetAxisRaw("Vertical");
 
         CheckGround();
-        grav+=0.1f;
+        grav+=1f;
 
         arms.SetBool("backwards", y==-1);
         arms.speed = Mathf.Abs(y*2);
@@ -40,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)&&IsGrounded)
         {
             Jump();   
+
         }
 
     }
@@ -62,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (IsGrounded)
+        if (IsGrounded || Grapling.instance.grappling)
         {
             grav = 0;
         }
