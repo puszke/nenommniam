@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject m_Player;
+    public Animator arms;
     private Rigidbody rb;   
 
     public float jumpForce;
@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float grav=0;
     float x, y;
+
+    public float speed = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -32,11 +34,9 @@ public class PlayerMovement : MonoBehaviour
         CheckGround();
         grav+=0.1f;
 
-        if(IsGrounded)
-        {
-            grav=0;
-        }
-        rb.AddForce(0,-grav,0);
+        arms.SetBool("backwards", y==-1);
+        arms.speed = Mathf.Abs(y*2);
+        
         if(Input.GetKeyDown(KeyCode.Space)&&IsGrounded)
         {
             Jump();   
@@ -62,6 +62,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.AddForce(transform.forward*y + transform.right*x, ForceMode.Impulse);
+        if (IsGrounded)
+        {
+            grav = 0;
+        }
+        rb.AddForce(0, -grav, 0);
+        rb.AddForce(transform.forward*y*speed + transform.right*x*speed, ForceMode.Impulse);
     }
 }

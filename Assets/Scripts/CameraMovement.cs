@@ -26,11 +26,16 @@ public class CameraMovement : MonoBehaviour
         x = Input.GetAxis("Mouse X");
         y = Input.GetAxis("Mouse Y");
 
-        c_x+=x;
-        c_y+=y;
-        c_y = math.clamp(c_y,-90,90);
+        c_x += x;
+        c_y += y;
+        c_y = math.clamp(c_y, -90, 90);
 
-        player.transform.rotation = Quaternion.Euler(0,c_x*sensitivity,0);  
-        transform.localRotation = Quaternion.Euler(-c_y*sensitivity, 0, 0);
+        if (!Grapling.instance.grappling)
+        {
+
+            player.transform.rotation = Quaternion.Euler(0, c_x * sensitivity, 0);
+
+            transform.localRotation = Quaternion.Euler(-c_y * sensitivity, 0, 0);
+        }
     }
 }

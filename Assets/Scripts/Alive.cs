@@ -19,17 +19,24 @@ public class Alive : MonoBehaviour
         }
     }
 
+    public void DiePublic(GameObject b)
+    {
+        StartCoroutine(Die(b));
+    }
+
     IEnumerator Die(GameObject other)
     {
         isAlive=false;
         transform.Rotate(Random.Range(-90,90),Random.Range(-90,90), Random.Range(-90,90));
         rb.isKinematic = true;
         Time.timeScale = 0.2f;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        Time.fixedDeltaTime = 0.002f * Time.timeScale;
         yield return new WaitForSecondsRealtime(0.3f);
         rb.isKinematic = false;
+        Grapling.instance.grappling=false;
+        rb.drag = 1f;
         Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
+        Time.fixedDeltaTime = 0.002f;
         rb.AddForce((other.transform.forward*5+other.transform.right*Random.Range(-5,5))*dieSpeed, ForceMode.Impulse);
         rb.AddTorque(90,90,90);
     }

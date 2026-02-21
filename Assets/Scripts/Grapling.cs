@@ -17,16 +17,27 @@ public class Grapling : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
 
+    public float goalFov = 60;
+
+    
+    public bool grappling = false;
+
+    public GameObject grabArm, grabArmEnd, mouth;
+
     void Awake()
     {
-      instance=this;  
+        instance=this;  
     }
 
     void Update()
     {
-        FindNearestVisibleTarget();
+        if(!grappling)
+            FindNearestVisibleTarget();
 
-        if(CurrentTarget!=null)
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, goalFov, Time.deltaTime * 9);
+        
+
+        if (CurrentTarget!=null)
         {
             currentDistance = Vector3.Distance(CurrentTarget.position, transform.position);
             transform.LookAt(CurrentTarget);
@@ -34,12 +45,57 @@ public class Grapling : MonoBehaviour
             {
                 if(Input.GetMouseButtonDown(1))
                 {
-                    rb.AddForce(transform.forward*90);
+                    StartCoroutine(StartGrabbing());
                 }
             }
-
+            if (currentDistance < 1f && grappling)
+            {
+                //rb.gameObject.transform.position = CurrentTarget.position;
+                CurrentTarget.GetComponent<Alive>().DiePublic(gameObject);
+                
+                //transform.parent.root.transform.position = CurrentTarget.position;
+                Debug.Log(transform.parent.root.position);
+                Debug.Log(CurrentTarget.position);
+                //rb.gameObject.transform.LookAt(CurrentTarget.position);
+                rb.velocity = Vector3.zero;
+                grappling = false;
+                grabArm.SetActive(false);
+            }
         }
     }
+
+    IEnumerator StartGrabbing()
+    {
+        grabArm.SetActive(true);
+        grabArmEnd.transform.localPosition = Vector3.zero;
+        mouth.GetComponent<MouthAnim>().moving = false;
+        yield return new WaitForSeconds(0.3f);
+        mouth.GetComponent<Animator>().speed = 1;
+        mouth.GetComponent<Animator>().SetBool("attack", true);
+        grappling = true;
+    }
+
+    private void FixedUpdate()
+    {
+        if(CurrentTarget!=null)
+            grabArmEnd.transform.position = Vector3.Lerp(grabArmEnd.transform.position, CurrentTarget.position, 12 * Time.deltaTime);
+        if (grappling && CurrentTarget!=null)
+        {
+            goalFov =120;
+            //rb.useGravity = false;
+            rb.transform.LookAt(CurrentTarget.position);
+            rb.transform.position = Vector3.Lerp(transform.position, CurrentTarget.position, 12* Time.deltaTime);
+
+            //grappling=false;
+        }
+        else
+        {
+            goalFov = 60;
+        }
+        //transform.parent.root.GetComponent<SphereCollider>().enabled = !grappling;
+    }
+
+   
 
     void FindNearestVisibleTarget()
     {
@@ -60,14 +116,16 @@ public class Grapling : MonoBehaviour
             if (distance < closestDistance)
             {
                 
-                if (HasLineOfSight(obj.transform))
+                if (HasLineOfSight(obj.transform)&&obj.GetComponent<Alive>().isAlive && obj.GetComponent<MeshRenderer>().isVisible)
                 {
+                    
                     closestDistance = distance;
                     bestTarget = obj.transform;
                 }
             }
         }
-
+        if(CurrentTarget!=bestTarget)
+            grappling=false;
         CurrentTarget = bestTarget;
     }
 

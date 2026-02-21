@@ -7,9 +7,13 @@ public class Claws : MonoBehaviour
 
     public Rigidbody rb;
 
-    public bool canAttack = true;
+    public bool canAttack = true, attacked = false;
+
+    public Animator mouth;
 
     public float leapForce=1;
+
+    [SerializeField] private SphereCollider killbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +24,27 @@ public class Claws : MonoBehaviour
         canAttack=false;
         yield return new WaitForSecondsRealtime(0.5f);
         canAttack=true;
+        attacked=false;
     }
-
+    private void FixedUpdate()
+    {
+        if(!canAttack&&!attacked)
+        {
+            attacked=true;
+            rb.AddForce(transform.forward* leapForce + transform.up, ForceMode.Impulse);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        killbox.enabled  = (!canAttack);
+        mouth.SetBool("attack",!canAttack);
+        mouth.gameObject.GetComponent<MouthAnim>().anim.speed = 1;
+        mouth.gameObject.GetComponent<MouthAnim>().enabled = canAttack;
         if(Input.GetMouseButtonDown(0)&&canAttack)
         {
             StartCoroutine(DelayAttack());
-            rb.AddForce(transform.forward*Grapling.instance.currentDistance*leapForce+transform.up*Grapling.instance.currentDistance*leapForce/2,ForceMode.Impulse);
+            
         }
     }
 }
