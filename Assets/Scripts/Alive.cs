@@ -11,7 +11,7 @@ public class Alive : MonoBehaviour
 
     private Rigidbody rb;
 
-    [SerializeField] private GameObject blood;
+    [SerializeField] private GameObject blood, organs, bloodGround;
 
     void OnTriggerEnter(Collider other)
     {
@@ -35,12 +35,14 @@ public class Alive : MonoBehaviour
         blood.SetActive(true);
         CamShake.Instance.Shake(0.2f, 0.1f);
         Time.fixedDeltaTime = 0.002f * Time.timeScale;
+        GameObject bloodGroundN = Instantiate(bloodGround, transform.position - new Vector3(0,1,0), Quaternion.identity);
         yield return new WaitForSecondsRealtime(0.3f);
         rb.isKinematic = false;
         Grapling.instance.grappling=false;
         rb.drag = 1f;
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.002f;
+        organs.SetActive(false);
         rb.AddForce((other.transform.forward*5+other.transform.right*Random.Range(-5,5))*dieSpeed, ForceMode.Impulse);
         rb.AddTorque(90,90,90);
     }
