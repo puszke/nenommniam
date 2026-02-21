@@ -1,0 +1,101 @@
+.container {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-size: 70px;
+    -unity-font-style: bold;
+    margin-bottom: 60px;
+    letter-spacing: 5px;
+}
+
+.neon-button {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    -unity-font-style: bold;
+    width: 300px;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.neon-button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 0, 168, 0.4); /* Neonowy róż jako tło */
+    text-shadow: 0 0 10px rgb(255, 255, 255);
+    scale: 1.05 1.05;
+    translate: 0 -3px;
+}
+
+.neon-button:active {
+    scale: 0.95 0.95;
+    background-image: none;
+    background-color: rgb(255, 152, 150);
+    color: rgb(0, 0, 0);
+    transition-duration: 0.1s;
+}
+
+/* Dropdown Styles */
+.neon-dropdown {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+}
+
+.neon-dropdown > .unity-base-field__label {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    -unity-font-style: bold;
+    min-width: 150px;
+    -unity-text-align: middle-left;
+}
+
+.neon-dropdown > .unity-base-field__input {
+    background-color: transparent;
+    border-left-color: rgb(178, 255, 143);
+    border-right-color: rgb(178, 255, 143);
+    border-top-color: rgb(178, 255, 143);
+    border-bottom-color: rgb(178, 255, 143);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.neon-dropdown > .unity-base-field__input:hover {
+    background-color: rgba(178, 255, 143, 0.1);
+    box-shadow: 0 0 10px rgb(178, 255, 143);
+}
+
+.neon-dropdown .unity-popup-field__arrow {
+    -unity-background-image-tint-color: rgb(178, 255, 143);
+}

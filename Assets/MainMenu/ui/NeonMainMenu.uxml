@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="NeonMainMenu.uss" />
+    <ui:VisualElement class="container">
+        <!-- Main Menu Screen -->
+        <ui:VisualElement name="MainMenuScreen" style="align-items: center; justify-content: center; width: 100%; height: 100%;">
+            <ui:Label text="Nenom" class="title" />
+            <ui:Button name="btn-play" text="START GAME" class="neon-button" />
+            <ui:Button name="btn-options" text="OPTIONS" class="neon-button" />
+            <ui:Button name="btn-quit" text="QUIT" class="neon-button" />
+        </ui:VisualElement>
+
+        <!-- Options Screen -->
+        <ui:VisualElement name="OptionsScreen" style="align-items: center; justify-content: center; width: 100%; height: 100%; display: none;">
+            <ui:Label text="OPTIONS" class="title" />
+            
+            <!-- Ustawienia Ekranu -->
+            <ui:VisualElement style="margin-bottom: 40px; width: 400px;">
+                <ui:DropdownField name="dropdown-resolution" label="Resolution" class="neon-dropdown" />
+                <ui:DropdownField name="dropdown-display" label="Display Monitor" class="neon-dropdown" />
+            </ui:VisualElement>
+
+            <ui:Button name="btn-back" text="BACK" class="neon-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,40 @@
+.time-bar-container {
+    width: 1000px;
+    height: 60px;
+    position: absolute;
+    bottom: 20px; /* Odległość od dolnej krawędzi */
+    left: 50%;
+    translate: -50% 0; /* Przesunięcie o połowę szerokości w lewo, aby idealnie wyśrodkować */
+}
+
+/* Maska, która faktycznie ucina pasek z prawej strony */
+.time-bar-fill-mask {
+    position: absolute;
+    /* Ustaw marginesy tak, aby maska idealnie pasowała w przezroczyste pole ramki */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%; /* Ta wartość teraz jest modyfikowana przez skrypt (od 0% do 100%) */
+    overflow: hidden; /* To najważniejsze: obcina zawartość wychodzącą poza maskę */
+}
+
+/* Sam obrazek wypełnienia jest wewnątrz maski */
+.time-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1000px; /* Musi być taka sama jak szerokość całego kontenera (1000px) */
+    background-image: url('wypelniacz.png');
+    -unity-background-scale-mode: stretch-to-fill; /* lub scale-and-crop, teraz i tak maska upewnia się o ucięciu */
+}
+
+.time-bar-frame {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('ramka.png');
+    -unity-background-scale-mode: stretch-to-fill;
+}
