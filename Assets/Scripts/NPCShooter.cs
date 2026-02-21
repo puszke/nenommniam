@@ -24,6 +24,8 @@ public class NPCShooter : MonoBehaviour
     private float nextFireTime = 0f;
     private Alive aliveScript;
 
+    bool shoot=false;
+
     void Start()
     {
         aliveScript = GetComponent<Alive>();
@@ -72,30 +74,25 @@ public class NPCShooter : MonoBehaviour
             }
         }
     }
-
+    private void FixedUpdate()
+    {
+        if (shoot)
+        {
+            GameObject newBullet = Instantiate(bulletTrailPrefab);
+            newBullet.transform.position = transform.position;
+            newBullet.transform.LookAt(player.position);
+            newBullet.GetComponent<Rigidbody>().AddForce(newBullet.transform.forward * 50, ForceMode.Impulse);
+            shoot = false;
+        }
+    }
     void Shoot()
     {
         // Tutaj logiki strzału - odtworzenie dźwięku, błysku, itp.
         
         if (bulletTrailPrefab != null)
         {
-            GameObject trail = Instantiate(bulletTrailPrefab, firePoint.position, firePoint.rotation);
-            LineRenderer lr = trail.GetComponent<LineRenderer>();
+            shoot= true;
             
-            if (lr != null)
-            {
-                // Ustaw punkt początkowy na lufie broni
-                lr.SetPosition(0, firePoint.position);
-                
-                // Kierunek strzału to gracz + np. lekki offset na wysokość brzucha/klatki piersiowej
-                Vector3 targetPosition = player.position + Vector3.up * 1f;
-
-                // Ustaw punkt końcowy (na graczu lub tam, gdzie poleciał pocisk)
-                lr.SetPosition(1, targetPosition);
-            }
-
-            // Zniszcz smugę po krótkim czasie, np. po 0.1s
-            Destroy(trail, 0.1f);
         }
         else
         {
