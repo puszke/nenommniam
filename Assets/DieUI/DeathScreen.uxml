@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="DeathScreen.uss" />
+    <ui:VisualElement name="blood-vignette" class="blood-effect">
+        <ui:Label text="Press R to restart" class="restart-text" />
+    </ui:VisualElement>
+</ui:UXML>
