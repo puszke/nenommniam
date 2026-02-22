@@ -12,6 +12,8 @@ public class Alive : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField] private GameObject blood, organs, bloodGround;
+    public AudioClip die;
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,7 +27,7 @@ public class Alive : MonoBehaviour
     {
         StartCoroutine(Die(b));
     }
-
+    
     IEnumerator Die(GameObject other)
     {
         PlayerDeath.instance.Heal();
@@ -37,6 +39,9 @@ public class Alive : MonoBehaviour
         blood.SetActive(true);
         CamShake.Instance.Shake(0.2f, 0.1f);
         Time.fixedDeltaTime = 0.002f * Time.timeScale;
+        GetComponent<AudioSource>().pitch = Random.Range(0.3f, 0.5f);
+        GetComponent<AudioSource>().PlayOneShot(die);
+
         GameObject bloodGroundN = Instantiate(bloodGround, transform.position - new Vector3(0,1,0), Quaternion.identity);
         yield return new WaitForSecondsRealtime(0.3f);
         rb.isKinematic = false;

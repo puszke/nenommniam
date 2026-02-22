@@ -11,7 +11,7 @@ public class PlayerDeath : MonoBehaviour
 
     [Header("UI i Efekty")]
     [Tooltip("Przypisz tutaj obiekt z komponentem UIDocument powiązany z interfejsem śmierci")]
-    public UIDocument ekranSmierciUI; 
+    public GameObject ekranSmierciUI; 
     [Tooltip("Opcjonalnie: Przypisz Particle System odpowiadający za krew emitowaną w świecie 3D")]
     public ParticleSystem efektKrwi; 
 
@@ -45,7 +45,8 @@ public class PlayerDeath : MonoBehaviour
         // Ukrywamy UI na starcie, jeśli zostało podpięte
         if (ekranSmierciUI != null)
         {
-            uiRoot = ekranSmierciUI.rootVisualElement;
+            //uiRoot = ekranSmierciUI.rootVisualElement;
+
             if (uiRoot != null)
             {
                 uiRoot.style.display = DisplayStyle.None;
@@ -54,27 +55,25 @@ public class PlayerDeath : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == 12)
-        {
-            isDead = true;
-        }
+        
     }
     void Update()
     {
         // Jeśli gracz jest martwy czekamy tylko na wciśnięcie klawisza R
         if (isDead)
         {
+            ekranSmierciUI.SetActive(true);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 RestartPoziomu();
             }
             return;
         }
-
+        aktualnyCzas -= Time.deltaTime;
         // Odliczanie czasu
         if (aktualnyCzas > 0)
         {
-            aktualnyCzas -= Time.deltaTime;
+            //aktualnyCzas -= Time.deltaTime;
         }
         else
         {

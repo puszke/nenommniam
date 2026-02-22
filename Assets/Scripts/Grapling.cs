@@ -36,6 +36,7 @@ public class Grapling : MonoBehaviour
         {
             FindNearestVisibleTarget();
             rb.transform.gameObject.layer = 8;
+            
         }
         else
         {
@@ -61,7 +62,7 @@ public class Grapling : MonoBehaviour
             {
                 //rb.gameObject.transform.position = CurrentTarget.position;
                 CurrentTarget.GetComponent<Alive>().DiePublic(gameObject);
-                
+                audioSource.Stop();
                 //transform.parent.root.transform.position = CurrentTarget.position;
                 Debug.Log(transform.parent.root.position);
                 Debug.Log(CurrentTarget.position);
@@ -79,15 +80,15 @@ public class Grapling : MonoBehaviour
 
     IEnumerator StartGrabbing()
     {
-        audioSource.pitch = Random.Range(0.7f, 1.2f);
-        audioSource.PlayOneShot(actionSound);
+        //audioSource.pitch = Random.Range(0.7f, 1.2f);
         grabArm.SetActive(true);
         grabArmEnd.transform.localPosition = Vector3.zero;
         mouth.GetComponent<MouthAnim>().moving = false;
         yield return new WaitForSeconds(0.3f);
+        grappling = true;
+        audioSource.PlayOneShot(actionSound);
         mouth.GetComponent<Animator>().speed = 1;
         mouth.GetComponent<Animator>().SetBool("attack", true);
-        grappling = true;
     }
 
     private void FixedUpdate()

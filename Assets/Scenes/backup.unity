@@ -18292,6 +18292,11 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 673074491}
+    - target: {fileID: 4062359179353297710, guid: c33f4af8a415859448e290aa688e24da,
+        type: 3}
+      propertyPath: actionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bf48bc9e7e3ea1c4b94a886bb19bb56d, type: 3}
     - target: {fileID: 4620784358296314727, guid: c33f4af8a415859448e290aa688e24da,
         type: 3}
       propertyPath: m_Enabled

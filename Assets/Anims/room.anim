@@ -847,7 +847,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 12.216666
+        time: 12.233334
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -1012,7 +1012,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 12.5
+    m_StopTime: 12.783334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -2992,7 +2992,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 12.216666
+        time: 12.233334
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -3084,7 +3084,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 12.5
+  - time: 12.783334
     functionName: ChangeScene
     data: 
     objectReferenceParameter: {fileID: 0}
