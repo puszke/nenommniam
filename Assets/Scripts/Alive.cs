@@ -40,6 +40,7 @@ public class Alive : MonoBehaviour
         rb.isKinematic = false;
         Grapling.instance.grappling=false;
         rb.drag = 1f;
+        PlayerDeath.instance.aktualnyCzas = PlayerDeath.instance.czasNaPrzezycie;
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.002f;
         organs.SetActive(false);

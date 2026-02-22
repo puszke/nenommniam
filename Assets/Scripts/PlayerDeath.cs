@@ -7,7 +7,7 @@ public class PlayerDeath : MonoBehaviour
     [Header("Ustawienia Czasu")]
     [Tooltip("Sztywno ustawiony czas do śmierci gracza")]
     public float czasNaPrzezycie = 60f; 
-    private float aktualnyCzas;
+    public float aktualnyCzas;
 
     [Header("UI i Efekty")]
     [Tooltip("Przypisz tutaj obiekt z komponentem UIDocument powiązany z interfejsem śmierci")]
@@ -25,8 +25,15 @@ public class PlayerDeath : MonoBehaviour
     [Tooltip("Przypisz skrypt Grapling (haka)")]
     public Grapling skryptGrapling;
 
-    private bool isDead = false;
+    public bool isDead = false;
     private VisualElement uiRoot;
+
+    public static PlayerDeath instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -42,7 +49,13 @@ public class PlayerDeath : MonoBehaviour
             }
         }
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 12)
+        {
+            isDead = true;
+        }
+    }
     void Update()
     {
         // Jeśli gracz jest martwy czekamy tylko na wciśnięcie klawisza R
