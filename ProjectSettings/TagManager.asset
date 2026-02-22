@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Alive
   - Claws
+  - Jump
+  - Kill
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Teeth
   - Obstacle
   - Grappling
-  - 
+  - Bullet
   - 
   - 
   - 
