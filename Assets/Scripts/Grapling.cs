@@ -23,7 +23,8 @@ public class Grapling : MonoBehaviour
     public bool grappling = false;
 
     public GameObject grabArm, grabArmEnd, mouth, crosshair;
-
+    public AudioSource audioSource; // Przeciągnij tu komponent AudioSource w Inspektorze
+    public AudioClip actionSound;   // Przeciągnij tu plik dźwiękowy w Inspektorze
     void Awake()
     {
         instance=this;  
@@ -78,6 +79,7 @@ public class Grapling : MonoBehaviour
 
     IEnumerator StartGrabbing()
     {
+        audioSource.PlayOneShot(actionSound);
         grabArm.SetActive(true);
         grabArmEnd.transform.localPosition = Vector3.zero;
         mouth.GetComponent<MouthAnim>().moving = false;
