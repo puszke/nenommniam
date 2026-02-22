@@ -79,6 +79,7 @@ public class Grapling : MonoBehaviour
 
     IEnumerator StartGrabbing()
     {
+        audioSource.pitch = Random.Range(0.7f, 1.2f);
         audioSource.PlayOneShot(actionSound);
         grabArm.SetActive(true);
         grabArmEnd.transform.localPosition = Vector3.zero;
