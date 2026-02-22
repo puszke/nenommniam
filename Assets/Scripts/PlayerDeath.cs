@@ -34,7 +34,10 @@ public class PlayerDeath : MonoBehaviour
     {
         instance = this;
     }
-
+    public void Heal()
+    {
+        aktualnyCzas = czasNaPrzezycie;
+    }
     void Start()
     {
         aktualnyCzas = czasNaPrzezycie;
