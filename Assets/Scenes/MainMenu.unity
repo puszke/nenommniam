@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 1329844676}
-  gameSceneName: SampleScene
+  gameSceneName: backup
 --- !u!114 &1329844676
 MonoBehaviour:
   m_ObjectHideFlags: 0
