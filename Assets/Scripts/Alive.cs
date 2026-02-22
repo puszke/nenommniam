@@ -28,7 +28,9 @@ public class Alive : MonoBehaviour
 
     IEnumerator Die(GameObject other)
     {
-        isAlive=false;
+        PlayerDeath.instance.Heal();
+        isAlive =false;
+        rb.freezeRotation = false;
         transform.Rotate(Random.Range(-90,90),Random.Range(-90,90), Random.Range(-90,90));
         rb.isKinematic = true;
         Time.timeScale = 0.2f;
@@ -40,7 +42,7 @@ public class Alive : MonoBehaviour
         rb.isKinematic = false;
         Grapling.instance.grappling=false;
         rb.drag = 1f;
-        PlayerDeath.instance.aktualnyCzas = PlayerDeath.instance.czasNaPrzezycie;
+        
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.002f;
         organs.SetActive(false);
